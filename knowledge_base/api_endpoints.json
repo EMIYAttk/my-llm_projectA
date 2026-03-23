@@ -1,0 +1,28 @@
+{
+  "api_version": "v2.1",
+  "base_url": "https://api.example.com",
+  "endpoints": [
+    {
+      "path": "/auth/login",
+      "method": "POST",
+      "description": "用户登录获取JWT令牌",
+      "params": ["username", "password"],
+      "response": {"token": "string", "expires_in": 3600}
+    },
+    {
+      "path": "/users/{id}",
+      "method": "GET", 
+      "description": "获取用户信息",
+      "auth_required": true,
+      "response": {"id": "integer", "name": "string", "role": "string"}
+    },
+    {
+      "path": "/orders",
+      "method": "POST",
+      "description": "创建新订单",
+      "auth_required": true,
+      "rate_limit": "100/min"
+    }
+  ],
+  "notes": "所有请求需包含Content-Type: application/json头"
+}
